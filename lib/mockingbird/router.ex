@@ -35,7 +35,7 @@ defmodule Mockingbird.Router do
   defp handle_message(message, token) do
     body = %{
       "token" => token,
-      "channel" => "#test",
+      "channel" => "#random",
       "text" => message,
       "as_user" => true
     }
