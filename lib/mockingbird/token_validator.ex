@@ -1,10 +1,10 @@
 defmodule Mockingbird.TokenValidator do
-  alias Plug.Conn
+  import Plug.Conn
 
   @behaviour Plug
 
   def init(opts) do
-    Keyword.get(opts, :token, Application.get_env(:mockingbird, :token))
+    Keyword.get(opts, :token, Application.get_env(:mockingbird, :app_token))
   end
 
   def call(conn, token) do
