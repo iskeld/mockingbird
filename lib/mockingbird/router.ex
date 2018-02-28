@@ -4,7 +4,7 @@ defmodule Mockingbird.Router do
   @behaviour Plug
 
   def init(opts) do
-    Keyword.get(opts, :token, Application.get_env(:mockingbird, :bot_token))
+    Keyword.get(opts, :token, Mockingbird.Config.bot_token())
   end
 
   def call(conn, token) do

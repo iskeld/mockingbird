@@ -4,7 +4,7 @@ defmodule Mockingbird.TokenValidator do
   @behaviour Plug
 
   def init(opts) do
-    Keyword.get(opts, :token, Application.get_env(:mockingbird, :app_token))
+    Keyword.get(opts, :token, Mockingbird.Config.app_token())
   end
 
   def call(conn, token) do

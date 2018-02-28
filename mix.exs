@@ -25,7 +25,8 @@ defmodule Mockingbird.MixProject do
       {:cowboy, "~> 1.1"},
       {:plug, "~> 1.4"},
       {:poison, "~> 3.1"},
-      {:httpotion, "~> 3.1"}
+      {:httpotion, "~> 3.1"},
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 end
