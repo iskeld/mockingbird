@@ -7,6 +7,7 @@ defmodule Mockingbird.Application do
     port = Application.get_env(:mockingbird, :port)
 
     children = [
+      Mockingbird.Config,
       Plug.Adapters.Cowboy.child_spec(:http, Mockingbird.Handler, [], port: port)
     ]
 

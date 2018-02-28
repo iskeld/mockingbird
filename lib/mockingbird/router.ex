@@ -3,11 +3,9 @@ defmodule Mockingbird.Router do
 
   @behaviour Plug
 
-  def init(opts) do
-    Keyword.get(opts, :token, Mockingbird.Config.bot_token())
-  end
+  def init([]), do: []
 
-  def call(conn, token) do
+  def call(conn, _opts) do
     case conn.body_params do
       %{"type" => "url_verification", "challenge" => challenge} ->
         handle_url_verification(conn, challenge)
@@ -16,7 +14,7 @@ defmodule Mockingbird.Router do
         "type" => "event_callback",
         "event" => %{"type" => "message", "channel" => "D" <> _channel, "text" => text}
       } ->
-        handle_message(text, token)
+        handle_message(text)
         send_resp(conn, 200, "")
 
       _ ->
@@ -32,9 +30,11 @@ defmodule Mockingbird.Router do
     |> send_resp(200, response)
   end
 
-  defp handle_message(message, token) do
+  defp handle_message(message) do
+    message = String.replace(message, "@channel", "<!channel>")
+
     body = %{
-      "token" => token,
+      "token" => Mockingbird.Config.bot_token(),
       "channel" => "#random",
       "text" => message,
       "as_user" => true

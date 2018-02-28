@@ -3,11 +3,10 @@ defmodule Mockingbird.TokenValidator do
 
   @behaviour Plug
 
-  def init(opts) do
-    Keyword.get(opts, :token, Mockingbird.Config.app_token())
-  end
+  def init([]), do: []
 
-  def call(conn, token) do
+  def call(conn, _opts) do
+    token = Mockingbird.Config.app_token()
     case conn.body_params do
       %{"token" => ^token} -> conn
       %Plug.Conn.Unfetched{} -> raise "Unfetched"

@@ -51,5 +51,6 @@ ENV LANG=en_US.UTF-8 \
 
 COPY --from=builder /opt/mockingbird/_build/prod/rel/mockingbird /opt/mockingbird
 
+EXPOSE 4001
 ENTRYPOINT ["/opt/mockingbird/bin/mockingbird"]
 CMD ["foreground"]
