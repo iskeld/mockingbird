@@ -1,6 +1,6 @@
 # Mockingbird
 
-**TODO: Add description**
+A simple slack bot. Send it a prive message and the bot will post it to #random (anonymously).
 
 ## Installation
 
