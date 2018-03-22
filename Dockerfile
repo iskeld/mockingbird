@@ -1,4 +1,4 @@
-FROM elixir:1.6 as builder
+FROM elixir:1.6-slim as builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
