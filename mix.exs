@@ -4,7 +4,7 @@ defmodule Mockingbird.MixProject do
   def project do
     [
       app: :mockingbird,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -25,7 +25,7 @@ defmodule Mockingbird.MixProject do
       {:cowboy, "~> 1.1"},
       {:plug, "~> 1.4"},
       {:poison, "~> 3.1"},
-      {:httpotion, "~> 3.1"},
+      {:httpoison, "~> 1.0"},
       {:distillery, "~> 1.5", runtime: false}
     ]
   end
