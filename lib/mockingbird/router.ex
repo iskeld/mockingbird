@@ -47,7 +47,7 @@ defmodule Mockingbird.Router do
     with {:ok, data} <- download_file(url),
          {:ok, path} <- save_file(data, name) do
       upload_file(title, path)
-      File.rm(path) 
+      File.rm(path)
     end
   end
 
@@ -87,9 +87,15 @@ defmodule Mockingbird.Router do
   defp handle_message(message) do
     message = String.replace(message, "@channel", "<!channel>")
 
+    {channel, message} =
+      case Regex.run(~r/^\s*<#(\w+)\|\w+>\s*::(.*)/, message, capture: :all_but_first) do
+        [channel, msg] -> {channel, String.trim(msg)}
+        _ -> {@channel, message}
+      end
+
     body = %{
       "token" => Mockingbird.Config.bot_token(),
-      "channel" => @channel,
+      "channel" => channel,
       "text" => message,
       "as_user" => true
     }
