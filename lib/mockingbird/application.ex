@@ -8,7 +8,7 @@ defmodule Mockingbird.Application do
 
     children = [
       Mockingbird.Config,
-      Plug.Adapters.Cowboy.child_spec(:http, Mockingbird.Handler, [], port: port)
+      {Plug.Adapters.Cowboy2, scheme: :http, plug: Mockingbird.Handler, options: [port: port]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

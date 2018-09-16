@@ -4,8 +4,8 @@ defmodule Mockingbird.MixProject do
   def project do
     [
       app: :mockingbird,
-      version: "0.1.1",
-      elixir: "~> 1.6",
+      version: "0.1.2",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -22,11 +22,11 @@ defmodule Mockingbird.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:cowboy, "~> 1.1"},
-      {:plug, "~> 1.4"},
-      {:poison, "~> 3.1"},
-      {:httpoison, "~> 1.0"},
-      {:distillery, "~> 1.5", runtime: false}
+      {:cowboy, "~> 2.4"},
+      {:plug, "~> 1.6"},
+      {:poison, "~> 4.0"},
+      {:httpoison, "~> 1.3"},
+      {:distillery, "~> 2.0", runtime: false}
     ]
   end
 end
